@@ -1,1 +1,114 @@
-[]
+[
+  {
+    "title": "Student Care Fee Assistance (SCFA)",
+    "description": "Provides fee assistance for children from lower-income working families enrolled in MSF-registered Student Care Centres (SCCs).",
+    "groups": ["Students", "Lower Income"],
+    "type": "Education",
+    "by": "supportgowhere gov sg",
+    "link": "https://supportgowhere.life.gov.sg/schemes/SCFA/student-care-fee-assistance-scfa"
+  },
+  {
+    "title": "ComCare Interim Assistance",
+    "description": "Provides immediate financial assistance for lower-income individuals or families who require urgent and temporary financial relief.",
+    "groups": ["All", "Lower Income"],
+    "type": "General",
+    "by": "supportgowhere gov sg",
+    "link": "https://supportgowhere.life.gov.sg/schemes/COMCARE-INTERIM-ASSISTANCE/comcare-interim-assistance"
+  },
+  {
+    "title": "ComCare Long Term Assistance (LTA)",
+    "description": "Provides long-term support to those permanently unable to work due to old age, illness or disability, and have inadequate family support or savings to rely on for daily needs.",
+    "groups": ["Elderly", "Disabled"],
+    "type": "General",
+    "by": "supportgowhere gov sg",
+    "link": "https://supportgowhere.life.gov.sg/schemes/COMCARE-LTA/comcare-long-term-assistance-lta"
+  },
+  {
+    "title": "ComCare Short-to-Medium Term Assistance (SMTA)",
+    "description": "Provides temporary financial assistance for lower-income individuals or families who are temporarily unable to work, looking for a job or earning a low income and require assistance.",
+    "groups": ["Lower Income"],
+    "type": "General",
+    "by": "supportgowhere gov sg",
+    "link": "https://supportgowhere.life.gov.sg/schemes/COMCARE-SMTA/comcare-short-to-medium-term-assistance-smta"
+  },
+  {
+    "title": "DigitalAccess@Home Scheme",
+    "description": "Provides subsidised broadband and laptops/tablets to lower-income households to support their lifestyle needs, including work and social activities.",
+    "groups": ["Lower Income"],
+    "type": "Subsidies",
+    "by": "supportgowhere gov sg",
+    "link": "https://supportgowhere.life.gov.sg/schemes/DIGITALACCESS-HOME-SCHEME/digitalaccesshome-scheme"
+  },
+  {
+    "title": "Silver Support (SS) Scheme",
+    "description": "Provides a quarterly cash supplement to seniors who had low incomes during their working years and have less for their retirement now.",
+    "groups": ["Elderly"],
+    "type": "General",
+    "by": "supportgowhere gov sg",
+    "link": "https://supportgowhere.life.gov.sg/schemes/SILVERSUPPORT/silver-support-ss-scheme"
+  },
+  {
+    "title": "GST Voucher (GSTV) - Service and Conservancy Charges (S&CC) Rebate",
+    "description": "1.5 to 3.5 months of Service and Conservancy Charges (S&CC) Rebate for Singaporean households living in HDB flats every year.",
+    "groups": ["All"],
+    "type": "Subsidies",
+    "by": "supportgowhere gov sg",
+    "link": "https://supportgowhere.life.gov.sg/schemes/SERVICE-CONSERVANCY-CHARGES/gst-voucher-gstv-service-conservancy-charges-sandcc-rebate"
+  },
+  {
+    "title": "Public Rental Scheme - Joint Singles Scheme (JSS)",
+    "description": "Provides heavily subsidised flats for Singaporeans who are single and have no other housing options.",
+    "groups": ["Singles", "Homeless"],
+    "type": "Housing",
+    "by": "supportgowhere gov sg",
+    "link": "https://supportgowhere.life.gov.sg/schemes/PUBLICRENTAL-JSS/public-rental-scheme-joint-singles-scheme-jss"
+  },
+  {
+    "title": "Public Rental Scheme - Family Scheme",
+    "description": "Provides heavily subsidised rental flats for Singaporean households with no other housing options.",
+    "groups": ["All", "Homeless"],
+    "type": "Housing",
+    "by": "supportgowhere gov sg",
+    "link": "https://supportgowhere.life.gov.sg/schemes/PUBLICRENTAL-FAMILY/public-rental-scheme-family-scheme"
+  },
+  {
+    "title": "Healthcare Schemes and Subsidies - Healthcare Scheme",
+    "description": "Provides subsidised healthcare options for Singaporeans who are eligible.",
+    "groups": ["All"],
+    "type": "Healthcre",
+    "by": "moh gov sg",
+    "link": "https://www.moh.gov.sg/healthcare-schemes-subsidies"
+  },
+  {
+    "title": "Financial assistance for school (FAS) ",
+    "description": "Provides subsidised school fees and other school expenses for eligible Singaporeans.",
+    "groups": ["General"],
+    "type": "Education",
+    "by": "moe gov sg",
+    "link": "https://www.moe.gov.sg/financial-matters/financial-assistance"
+  },
+  {
+    "title": "Financial assistance for Singapore Polytechnic students ",
+    "description": "Provides subsidised full-time diploma courses school fees for eligible Singaporeans.",
+    "groups": ["SP students"],
+    "type": "Education",
+    "by": "sp edu sg",
+    "link": "https://www.sp.edu.sg/sp/student-services/osc-overview/student-support/financial-assistance/financial-schemes"
+  },
+  {
+    "title": "Basic living expenses for lower-income households ",
+    "description": "Provides basic living expenses for lower income households.",
+    "groups": ["Lower Income"],
+    "type": "Subsidies",
+    "by": "msf gov sg",
+    "link": "https://www.msf.gov.sg/what-we-do/comcare"
+  },
+  {
+    "title": "Basic living expenses for lower-income households ",
+    "description": "Provides basic living expenses for lower income households.",
+    "groups": ["Lower Income"],
+    "type": "Subsidies",
+    "by": "msf gov sg",
+    "link": "https://www.msf.gov.sg/what-we-do/comcare"
+  }
+]
