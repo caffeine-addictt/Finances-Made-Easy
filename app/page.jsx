@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-import AnimateOnViewDiv from '@components/AnimateOnViewDiv'
+import { AnimateOnViewDiv } from '@components/AnimateOnViewDiv'
 
 const Home = () => {
   const topRef = useRef(null)
@@ -103,15 +103,15 @@ const Home = () => {
 
 
       {/* Second Page */}
-      <section ref = {secondRef} className = 'h-full w-full'>
+      <section ref = {secondRef} className = 'h-fit w-full'>
         {/* First Container */}
-        <div className = 'relative top-0 w-full h-fit justify-center pt-10'>
+        <div className = 'flex top-0 w-full h-fit items-end justify-center pt-10'>
           <AnimateOnViewDiv
-            initial    = {{ left: '-40%', filter: 'blur(2px)' }}
-            animate    = {{ left: '5%', filter: 'blur(0px)' }}
-            exit       = {{ left: '-40%', filter: 'blur(2px)' }}
+            initial    = {{ 'margin-left': '-40%', filter: 'blur(2px)' }}
+            animate    = {{ 'margin-left': '5%', filter: 'blur(0px)' }}
+            exit       = {{ 'margin-left': '-40%', filter: 'blur(2px)' }}
             transition = {{ type: 'spring', stiffness: 50, duration: 0.5 }}
-            className  = 'absolute w-[40%] aspect-video rounded-lg overflow-hidden'
+            className  = 'w-[40%] aspect-video rounded-lg overflow-hidden'
           >
             <Image
               src = '/images/family_photo.jpg'
@@ -130,8 +130,7 @@ const Home = () => {
             animate    = {{ opacity: 1 }}
             exit       = {{ opacity: 0 }}
             transition = {{ type: 'spring', stiffness: 50, duration: 0.5, delay: 0.25 }}
-            className  = 'absolute flex flex-col justify-between w-[45%] h-fit py-2 self-center'
-            style      = {{ left: '50%' }}
+            className  = 'flex flex-col justify-between w-[45%] h-fit py-2 self-center mr-[5%] ml-auto'
           >
             {/* Header */}
             <AnimateOnViewDiv
@@ -190,33 +189,15 @@ const Home = () => {
 
 
         {/* Second Container */}
-        <div className = 'relative top-1/2 w-full h-fit pt-10'>
-          <AnimateOnViewDiv
-            initial    = {{ left: '100%', filter: 'blur(2px)' }}
-            animate    = {{ left: '55%', filter: 'blur(0px)' }}
-            exit       = {{ left: '100%', filter: 'blur(2px)' }}
-            transition = {{ type: 'spring', stiffness: 50, duration: 0.5 }}
-            className  = 'absolute w-[40%] aspect-video rounded-lg overflow-hidden'
-          >
-            <Image
-              src = '/images/planning.jpg'
-              alt = ''
-
-              width = {500}
-              height = {400}
-
-              className = 'w-full h-full'
-            />
-          </AnimateOnViewDiv>
-
+        <div className = 'flex top-1/2 w-full h-fit pt-10'>
+          
           {/* Text */}
           <AnimateOnViewDiv
             initial    = {{ opacity: 0 }}
             animate    = {{ opacity: 1 }}
             exit       = {{ opacity: 0 }}
             transition = {{ type: 'spring', stiffness: 50, duration: 0.5, delay: 0.25 }}
-            className  = 'absolute flex flex-col justify-between w-[45%] h-fit py-2'
-            style      = {{ right: '50%' }}
+            className  = 'flex flex-col justify-between w-[45%] h-fit py-2 ml-[5%] mr-auto'
           >
             {/* Header */}
             <AnimateOnViewDiv
@@ -268,9 +249,27 @@ const Home = () => {
                   className = 'h-7 w-7 aspect-auto'
                 />
                 <span className = 'h-fit text-normal font-medium'>Learn More</span>
-                
               </Link>
             </AnimateOnViewDiv>
+          </AnimateOnViewDiv>
+
+
+          <AnimateOnViewDiv
+            initial    = {{ 'margin-right': '-40%', filter: 'blur(2px)' }}
+            animate    = {{ 'margin-right': '5%', filter: 'blur(0px)' }}
+            exit       = {{ 'margin-right': '-40%', filter: 'blur(2px)' }}
+            transition = {{ type: 'spring', stiffness: 50, duration: 0.5 }}
+            className  = 'w-[40%] aspect-video rounded-lg overflow-hidden ml-auto'
+          >
+            <Image
+              src = '/images/planning.jpg'
+              alt = ''
+
+              width = {500}
+              height = {400}
+
+              className = 'w-full h-full'
+            />
           </AnimateOnViewDiv>
         </div>
       </section>

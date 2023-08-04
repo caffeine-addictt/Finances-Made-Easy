@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useAnimation, useInView } from 'framer-motion'
 
-const AnimateOnViewDiv = ({
+export const AnimateOnViewDiv = ({
   setRefHook,
   variants: parsedVariants,
   initial: parsedInitial,
@@ -59,4 +59,11 @@ const AnimateOnViewDiv = ({
   )
 }
 
-export default AnimateOnViewDiv
+export const reveal = {
+  initial:  { opacity: 0 },
+  animate: { opacity: 1 }
+}
+export const popReveal = {
+  initial:  { opacity: 0, scale: 0.9 },
+  animate: { opacity: 1, scale: 1.0 }
+}

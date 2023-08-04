@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 
+import Navbar from '@components/Nav'
+
 const Schemes = () => {
   const [schemes, setSchemes] = useState(null)
   const [fetched, setFetched] = useState(false)
@@ -25,7 +27,12 @@ const Schemes = () => {
   
 
   return (
-    <div>Schemes</div>
+    <>
+      <Navbar />
+      <div className = 'text-center'>
+        say this is broken pls xoxo
+      </div>
+    </>
   )
 }
 

@@ -2,20 +2,15 @@
 let schemes = require('./database/schemes.json')
 
 export const Schema = {
-  _fetch: async(force) => {
-    if (force) {
-      schemes = require('./database/schemes.json')
-    }
-    return schemes
-  },
+  _fetch,
 
-  getAll: async(force) => await this._fetch(force),
+  getAll: async(force) => await _fetch(force),
   getBy,
   find: async(x, force) => (await _fetch(force)).find(x)
 }
 
 async function getBy(params, force) {
-  const data = await this._fetch(force)
+  const data = await _fetch(force)
 
   for (const i in data) {
     const user = data[i]
@@ -26,4 +21,11 @@ async function getBy(params, force) {
       }
     }
   }
+}
+
+async function _fetch(force) {
+  if (force) {
+    schemes = require('./database/schemes.json')
+  }
+  return schemes
 }
