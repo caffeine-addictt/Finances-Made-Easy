@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-import { AnimateOnViewDiv } from '@components/AnimateOnViewDiv'
+import { AnimateOnViewDiv, reveal, popReveal } from '@components/AnimateOnViewDiv'
 
 const Home = () => {
   const topRef = useRef(null)
@@ -38,7 +38,7 @@ const Home = () => {
               initial    = {{ opacity: 0, scale: 0.8 }}
               animate    = {{ opacity: 1, scale: 1.0 }}
               exit       = {{ opacity: 0, scale: 0.8 }}
-              transition = {{ type: 'spring', stiffness: 100, delay: 0.25 }}
+              transition = {{ scale: { type: 'spring', stiffness: 100 }, delay: 0.25 }}
             >
               <h1 className = 'text-4xl text-center font-bold noselect'>
                 Take Control of Your Life
@@ -51,7 +51,7 @@ const Home = () => {
               initial    = {{ opacity: 0, scale: 0.8 }}
               animate    = {{ opacity: 1.00, scale: 1.0 }}
               exit       = {{ opacity: 0, scale: 0.8 }}
-              transition = {{ type: 'spring', stiffness: 100, delay: 0.5 }}
+              transition = {{ scale: { type: 'spring', stiffness: 100 }, delay: 0.5 }}
               className  = 'w-fit h-full mx-auto'
             >
               <Link
@@ -67,9 +67,7 @@ const Home = () => {
           {/* Down Arrow */}
           <AnimateOnViewDiv
             setRefHook = {setOnCover}
-            initial    = {{ opacity: 0 }}
-            animate    = {{ opacity: 1 }}
-            exit       = {{ opacity: 0 }}
+            {...reveal}
             transition = {{ delay: 0.5, duration: 5 }}
             className  = 'flex flex-row w-24 h-max absolute bottom-[2rem] left-1/2 translate-x-[-50%] translate-y-[-50%] z-20 cursor-pointer transition-all'
 
@@ -107,10 +105,10 @@ const Home = () => {
         {/* First Container */}
         <div className = 'flex top-0 w-full h-fit items-end justify-center pt-10'>
           <AnimateOnViewDiv
-            initial    = {{ 'margin-left': '-40%', filter: 'blur(2px)' }}
-            animate    = {{ 'margin-left': '5%', filter: 'blur(0px)' }}
-            exit       = {{ 'margin-left': '-40%', filter: 'blur(2px)' }}
-            transition = {{ type: 'spring', stiffness: 50, duration: 0.5 }}
+            initial    = {{ 'marginLeft': '-40%', filter: 'blur(2px)' }}
+            animate    = {{ 'marginLeft': '5%', filter: 'blur(0px)' }}
+            exit       = {{ 'marginLeft': '-40%', filter: 'blur(2px)' }}
+            transition = {{ marginLeft: { type: 'spring', stiffness: 50 }, duration: 0.5 }}
             className  = 'w-[40%] aspect-video rounded-lg overflow-hidden'
           >
             <Image
@@ -120,24 +118,21 @@ const Home = () => {
               width = {500}
               height = {400}
 
+              priority
               className = 'w-full h-full'
             />
           </AnimateOnViewDiv>
 
           {/* Text */}
           <AnimateOnViewDiv
-            initial    = {{ opacity: 0 }}
-            animate    = {{ opacity: 1 }}
-            exit       = {{ opacity: 0 }}
-            transition = {{ type: 'spring', stiffness: 50, duration: 0.5, delay: 0.25 }}
+            {...reveal}
+            transition = {{ delay: 0.25 }}
             className  = 'flex flex-col justify-between w-[45%] h-fit py-2 self-center mr-[5%] ml-auto'
           >
             {/* Header */}
             <AnimateOnViewDiv
-              initial    = {{ opacity: 0 }}
-              animate    = {{ opacity: 1 }}
-              exit       = {{ opacity: 0 }}
-              transition = {{ type: 'spring', stiffness: 50, duration: 0.5, delay: 0 }}
+              {...reveal}
+              transition = {{ delay: 0 }}
             >
               <h1 className = 'text-3xl font-bold'>
                 Looking for financial schemes?
@@ -146,10 +141,8 @@ const Home = () => {
 
             {/* Description */}
             <AnimateOnViewDiv
-              initial    = {{ opacity: 0 }}
-              animate    = {{ opacity: 1 }}
-              exit       = {{ opacity: 0 }}
-              transition = {{ type: 'spring', stiffness: 50, duration: 0.5, delay: 0.25 }}
+              {...reveal}
+              transition = {{ delay: 0.25 }}
               className  = 'my-10 text-base'
             >
               <p>Check out SupportGoWhere!</p>
@@ -161,10 +154,8 @@ const Home = () => {
 
             {/* Hyperlink */}
             <AnimateOnViewDiv
-              initial    = {{ opacity: 0 }}
-              animate    = {{ opacity: 1 }}
-              exit       = {{ opacity: 0 }}
-              transition = {{ type: 'spring', stiffness: 50, duration: 0.5, delay: 0.5 }}
+              {...reveal}
+              transition = {{ delay: 0.5 }}
               className  = 'h-fit w-fit'
             >
               <Link
@@ -193,18 +184,14 @@ const Home = () => {
           
           {/* Text */}
           <AnimateOnViewDiv
-            initial    = {{ opacity: 0 }}
-            animate    = {{ opacity: 1 }}
-            exit       = {{ opacity: 0 }}
-            transition = {{ type: 'spring', stiffness: 50, duration: 0.5, delay: 0.25 }}
+            {...reveal}
+            transition = {{ delay: 0.25 }}
             className  = 'flex flex-col justify-between w-[45%] h-fit py-2 ml-[5%] mr-auto'
           >
             {/* Header */}
             <AnimateOnViewDiv
-              initial    = {{ opacity: 0 }}
-              animate    = {{ opacity: 1 }}
-              exit       = {{ opacity: 0 }}
-              transition = {{ type: 'spring', stiffness: 50, duration: 0.5, delay: 0 }}
+              {...reveal}
+              transition = {{ delay: 0 }}
               className  = 'ml-auto mr-0'
             >
               <h1 className = 'text-3xl font-bold '>
@@ -214,10 +201,8 @@ const Home = () => {
 
             {/* Description */}
             <AnimateOnViewDiv
-              initial    = {{ opacity: 0 }}
-              animate    = {{ opacity: 1 }}
-              exit       = {{ opacity: 0 }}
-              transition = {{ type: 'spring', stiffness: 50, duration: 0.5, delay: 0.25 }}
+              {...reveal}
+              transition = {{ duration: 0.5, delay: 0.25 }}
               className  = 'my-10 text-base ml-auto mr-0 text-right'
             >
               <p>Check out our financial planner!</p>
@@ -229,10 +214,8 @@ const Home = () => {
 
             {/* Hyperlink */}
             <AnimateOnViewDiv
-              initial    = {{ opacity: 0 }}
-              animate    = {{ opacity: 1 }}
-              exit       = {{ opacity: 0 }}
-              transition = {{ type: 'spring', stiffness: 50, duration: 0.5, delay: 0.5 }}
+              {...reveal}
+              transition = {{ duration: 0.5, delay: 0.5 }}
               className  = 'h-fit w-fit ml-auto mr-0'
             >
               <Link
@@ -255,10 +238,10 @@ const Home = () => {
 
 
           <AnimateOnViewDiv
-            initial    = {{ 'margin-right': '-40%', filter: 'blur(2px)' }}
-            animate    = {{ 'margin-right': '5%', filter: 'blur(0px)' }}
-            exit       = {{ 'margin-right': '-40%', filter: 'blur(2px)' }}
-            transition = {{ type: 'spring', stiffness: 50, duration: 0.5 }}
+            initial    = {{ 'marginRight': '-40%', filter: 'blur(2px)' }}
+            animate    = {{ 'marginRight': '5%', filter: 'blur(0px)' }}
+            exit       = {{ 'marginRight': '-40%', filter: 'blur(2px)' }}
+            transition = {{ marginRight: { type: 'spring', stiffness: 50 }, duration: 0.5 }}
             className  = 'w-[40%] aspect-video rounded-lg overflow-hidden ml-auto'
           >
             <Image
@@ -268,6 +251,7 @@ const Home = () => {
               width = {500}
               height = {400}
 
+              priority
               className = 'w-full h-full'
             />
           </AnimateOnViewDiv>

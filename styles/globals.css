@@ -37,3 +37,24 @@ body {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+
+
+/* Change ugly native scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+
+  transition-delay: 1s;
+  transition-property: color linear ease-in-out;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
