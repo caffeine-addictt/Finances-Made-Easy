@@ -59,7 +59,7 @@ const Schemes = () => {
           )
         })
       })
-      setTimeout(() => setIsfiltering(false), 1000)
+      setIsfiltering(false)
     }))
   }
   
