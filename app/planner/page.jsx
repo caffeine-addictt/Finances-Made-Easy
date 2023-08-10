@@ -8,6 +8,9 @@ import { useEffect, useState } from 'react'
 import Nav from '@components/Nav'
 import { AnimateOnViewDiv, popReveal, reveal } from '@components/AnimateOnViewDiv'
 
+
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
 const Planner = () => {
   const [income, setIncome] = useState({})
   const [expenses, setExpenses] = useState({})
@@ -22,17 +25,39 @@ const Planner = () => {
   const [newExpense, setNewExpense] = useState({name: '', value: ''})
 
 
-  const resetAll = (showResetMsg) => {
-    setIncome({
+  const resetAll = async(showResetMsg, stagger) => {
+    const defaultIncome = {
       'Salary': ''
-    })
-    setExpenses({
+    }
+    const defaultExpenses = {
       'Rent'          : '',
       'Food'          : '',
       'Transportation': '',
       'Phone Plan'    : '',
       'Utility Bill'  : '',
-    })
+    }
+
+    if (stagger) {
+      const maxNum = Math.max( Object.keys(defaultIncome).length, Object.keys(defaultExpenses).length ) + 1
+
+      await sleep(400) // 0.4s
+      for (let i = 1; i < maxNum; i++) {
+        setIncome(Object.keys(defaultIncome).slice(0, i).reduce((result, key) => {
+          result[key] = defaultIncome[key]
+          return result
+        }, {}))
+        setExpenses(Object.keys(defaultExpenses).slice(0, i).reduce((result, key) => {
+          result[key] = defaultExpenses[key]
+          return result
+        }, {}))
+        await sleep(100) // 0.1s
+      }
+    }
+    else {
+      setIncome(defaultIncome)
+      setExpenses(defaultExpenses)  
+    }
+    
 
     if (showResetMsg) {
       // Show Reset Message
@@ -49,7 +74,7 @@ const Planner = () => {
   }
 
   // Setup
-  useEffect(resetAll, [])
+  useEffect(() => resetAll(false, true), [])
   useEffect(() => {
     setTotalInccome( calculate(income,   ' + '))
     setTotalExpenses(calculate(expenses, ' + '))
@@ -58,7 +83,7 @@ const Planner = () => {
   return (
     <>
       <Nav />
-      <div className = 'flex flex-col gap-3 h-fit w-full'>
+      <div className = 'flex flex-col gap-3 h-fit w-full min-h-[75vh]'>
 
         {/* Header */}
         <AnimateOnViewDiv
@@ -105,7 +130,7 @@ const Planner = () => {
         >
           <button
             type = 'button'
-            onClick = {() => resetAll(true)}
+            onClick = {async() => await resetAll(true, false)}
             className = 'w-fit h-fit px-5 py-2 mb-10 bg-red-600 bg-opacity-70 rounded-md shadow-md hover:bg-opacity-75 active:border'
           >
             Reset
@@ -137,7 +162,8 @@ const Planner = () => {
               return (
                 <AnimateOnViewDiv
                   {...popReveal}
-                  transition = {{ type: 'spring', stiffness: 100, delay: 0.4 + 0.1*i }}
+                  key = {i}
+                  transition = {{ type: 'spring', stiffness: 100, delay: 0.1 }}
                   className  = 'flex flex-row gap-2 w-fit h-fit justify-end'
                 >
                   {/* Name */}
@@ -242,9 +268,7 @@ const Planner = () => {
 
 
           {/* Expenses */}
-          <AnimateOnViewDiv
-            className  = 'flex flex-col gap-2 items-start w-[90%] h-fit pl-[5%] border-l sm:w-[45%]'
-          >
+          <AnimateOnViewDiv className  = 'flex flex-col gap-2 items-start w-[90%] h-fit pl-[5%] border-l sm:w-[45%]' >
             {/* Header */}
             <AnimateOnViewDiv
               {...reveal}
@@ -261,7 +285,8 @@ const Planner = () => {
               return (
                 <AnimateOnViewDiv
                   {...popReveal}
-                  transition = {{ type: 'spring', stiffness: 100, delay: 0.4 + 0.1*i }}
+                  key = {i}
+                  transition = {{ type: 'spring', stiffness: 100, delay: 0.05 }}
                   className  = 'flex flex-row gap-2 w-fit h-fit justify-start'
                 >
                   {/* Name */}

@@ -9,7 +9,7 @@ import Loading from '@components/Loading'
 import Navbar from '@components/Nav'
 import { AnimateOnViewDiv, reveal, popReveal } from '@components/AnimateOnViewDiv'
 
-const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 const Schemes = () => {
   const [schemes, setSchemes] = useState(null)                   // Private Cache
@@ -30,7 +30,7 @@ const Schemes = () => {
 
   // Search
   const handleSearch = (parsedQuery, parsedTypes, parsedGroups) => {
-    if (filteringTimeout) clearTimeout(filteringTimeout)                    // Clear previous running filter
+    if (filteringTimeout) clearTimeout(filteringTimeout)                         // Clear previous running filter
     setIsfiltering(true)
 
     if (parsedQuery !== false) setQuery(parsedQuery)
@@ -41,24 +41,31 @@ const Schemes = () => {
     parsedTypes  = (parsedTypes !== false)  ? parsedTypes  : queryTypes
     parsedGroups = (parsedGroups !== false) ? parsedGroups : queryGroups
 
-    setFilteringTimeout(setTimeout(() => {                                   // Cache new running filter
-      setFiltered(prev => {
-        return schemes.filter(item => {
-          return (
-            (
-              (parsedQuery.toLowerCase() === '')
-              ||
-              (item.title.toLowerCase().startsWith(parsedQuery.toLowerCase()))
-            ) && (
-              (parsedTypes.some(qt => item.type === qt))                     // Match query to item type
-              ||
-              (parsedGroups.some(qg => item.groups.includes(qg)))            // Match query to item group
-              ||
-              (parsedTypes.length == 0 && parsedGroups.length == 0)          // Bypass to show everything if nothing selected
-            )
+    setFilteringTimeout(setTimeout(async() => {                                   // Cache new running filter
+
+      // Filter
+      const filteredData = schemes.filter(item => {
+        return (
+          (
+            (parsedQuery.toLowerCase() === '')
+            ||
+            (item.title.toLowerCase().startsWith(parsedQuery.toLowerCase()))
+          ) && (
+            (parsedTypes.some(qt => item.type === qt))                            // Match query to item type
+            ||
+            (parsedGroups.some(qg => item.groups.includes(qg)))                   // Match query to item group
+            ||
+            (parsedTypes.length == 0 && parsedGroups.length == 0)                 // Bypass to show everything if nothing selected
           )
-        })
+        )
       })
+
+
+      // Stagger Data
+      for (let i = 1; i < filteredData.length + 1; i++) {
+        setFiltered(filteredData.slice(0, i))
+        await sleep(100)
+      }
       setIsfiltering(false)
     }))
   }
@@ -72,7 +79,7 @@ const Schemes = () => {
         const data = await response.json()
 
         setSchemes(data)
-        setFiltered(data)
+        setTimeout(() => setFiltered(data), 300)
 
         // Load Categories
         let cacheTypes = new Set()
@@ -243,7 +250,7 @@ const Schemes = () => {
 
 
         {/* Results */}
-        <AnimateOnViewDiv className  = 'flex flex-col gap-5 w-full sm:w-[60%] h-full max-h-[90vh] overflow-y-auto' >
+        <AnimateOnViewDiv className  = 'flex flex-col gap-5 w-full sm:w-[60%] h-full max-h-[90vh] overflow-y-auto overflow-x-clip' >
           {(!fetched || (fetched && (!filtered || !(filtered.length > 0))) || isFiltering) ? (
             <div className  = 'mt-10 text-center text-xl font-bold' >
               {(isFiltering || !fetched) ? (
@@ -262,8 +269,8 @@ const Schemes = () => {
                   <AnimateOnViewDiv
                     {...popReveal}
                     key = {i}
-                    transition = {{ scale: { type: 'spring', stiffness: 100 }, delay: 0.1 + 0.05*i }}
-                    className  = 'w-fit min-w-[80%] max-w-full h-fit'
+                    transition = {{ scale: { type: 'spring', stiffness: 100 }, delay: 0.05 }}
+                    className  = 'w-fit min-w-[80%] max-w-[90%] h-fit'
                   >
                     <Link
                       href = {item.link}
@@ -278,6 +285,7 @@ const Schemes = () => {
                         {...reveal}
                         transition = {{ delay: 0.05 }}
                         className  = 'flex flex-row gap-1 h-fit w-fit font-normal text-base'
+                        style = {{ 'text-wrap': 'balance' }}
                       >
                         {item.description}
                       </AnimateOnViewDiv>

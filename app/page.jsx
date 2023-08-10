@@ -105,10 +105,10 @@ const Home = () => {
         {/* First Container */}
         <div className = 'flex top-0 w-full h-fit items-end justify-center pt-10'>
           <AnimateOnViewDiv
-            initial    = {{ 'marginLeft': '-40%', filter: 'blur(2px)' }}
-            animate    = {{ 'marginLeft': '5%', filter: 'blur(0px)' }}
-            exit       = {{ 'marginLeft': '-40%', filter: 'blur(2px)' }}
-            transition = {{ marginLeft: { type: 'spring', stiffness: 50 }, duration: 0.5 }}
+            initial    = {{ 'marginLeft': '-40%' }}
+            animate    = {{ 'marginLeft': '5%' }}
+            exit       = {{ 'marginLeft': '-40%' }}
+            transition = {{ marginLeft: { type: 'spring', stiffness: 50 }, duration: 0.1 }}
             className  = 'w-[40%] aspect-video rounded-lg overflow-hidden'
           >
             <Image
@@ -238,10 +238,10 @@ const Home = () => {
 
 
           <AnimateOnViewDiv
-            initial    = {{ 'marginRight': '-40%', filter: 'blur(2px)' }}
-            animate    = {{ 'marginRight': '5%', filter: 'blur(0px)' }}
-            exit       = {{ 'marginRight': '-40%', filter: 'blur(2px)' }}
-            transition = {{ marginRight: { type: 'spring', stiffness: 50 }, duration: 0.5 }}
+            initial    = {{ 'marginRight': '-40%' }}
+            animate    = {{ 'marginRight': '5%' }}
+            exit       = {{ 'marginRight': '-40%' }}
+            transition = {{ marginRight: { type: 'spring', stiffness: 50 }, duration: 0.1 }}
             className  = 'w-[40%] aspect-video rounded-lg overflow-hidden ml-auto'
           >
             <Image
