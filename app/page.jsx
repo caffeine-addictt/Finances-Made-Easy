@@ -16,7 +16,7 @@ const Home = () => {
   const [coverLoaded, setCoverLoaded] = useState(false)
 
   return (
-    <div className = 'h-full w-full'>
+    <div className = 'h-fit w-full'>
 
       {/* First Page */}
       <section ref = {topRef} className = 'h-full w-full'>
@@ -100,6 +100,9 @@ const Home = () => {
       </section>
 
 
+
+
+
       {/* Second Page */}
       <section ref = {secondRef} className = 'h-fit w-full'>
         {/* First Container */}
@@ -160,6 +163,7 @@ const Home = () => {
             >
               <Link
                 href = 'https://supportgowhere.life.gov.sg'
+                target = '_blank'
                 className = 'flex flex-row gap-2 py-1 px-2 w-fit h-10 justify-center items-center rounded-md bg-blue-600 opacity-80 hover:opacity-95 active:border'
               >
                 <Image
@@ -209,7 +213,7 @@ const Home = () => {
               <p>Able to calculate your savings insantly, helping you plan better!</p>
               <br />
               <p>Accounts for:</p>
-              <p className = 'text-sm font-light'>Expenses, </p>
+              <p className = 'text-sm font-light'>Expenses, Income, ...</p>
             </AnimateOnViewDiv>
 
             {/* Hyperlink */}
@@ -256,7 +260,94 @@ const Home = () => {
             />
           </AnimateOnViewDiv>
         </div>
+
+
+        {/* Third Container */}
+        <div className = 'flex top-0 w-full h-fit items-end justify-center pt-10'>
+          <AnimateOnViewDiv
+            initial    = {{ 'marginLeft': '-40%' }}
+            animate    = {{ 'marginLeft': '5%' }}
+            exit       = {{ 'marginLeft': '-40%' }}
+            transition = {{ marginLeft: { type: 'spring', stiffness: 50 }, duration: 0.1 }}
+            className  = 'w-[40%] aspect-video rounded-lg overflow-hidden'
+          >
+            <Image
+              src = '/images/managing_finances.jpg'
+              alt = ''
+
+              width = {500}
+              height = {400}
+
+              priority
+              className = 'w-full h-full'
+            />
+          </AnimateOnViewDiv>
+
+          {/* Text */}
+          <AnimateOnViewDiv
+            {...reveal}
+            transition = {{ delay: 0.25 }}
+            className  = 'flex flex-col justify-between w-[45%] h-fit py-2 self-center mr-[5%] ml-auto'
+          >
+            {/* Header */}
+            <AnimateOnViewDiv
+              {...reveal}
+              transition = {{ delay: 0 }}
+            >
+              <h1 className = 'text-3xl font-bold'>
+                Don't know how to save?
+              </h1>
+            </AnimateOnViewDiv>
+
+            {/* Description */}
+            <AnimateOnViewDiv
+              {...reveal}
+              transition = {{ delay: 0.25 }}
+              className  = 'my-10 text-base'
+            >
+              <p>Check out MoneySense!</p>
+              <p>A Singapore Government Website for Learning to Save Money!</p>
+              <br />
+              <p>It will teach you to:</p>
+              <p className = 'text-sm font-light'>Save regularly, Create a budget, Plan ahead, ...</p>
+            </AnimateOnViewDiv>
+
+            {/* Hyperlink */}
+            <AnimateOnViewDiv
+              {...reveal}
+              transition = {{ delay: 0.5 }}
+              className  = 'h-fit w-fit'
+            >
+              <Link
+                href = 'https://www.moneysense.gov.sg/articles/2018/10/money-habits-to-adopt-when-youre-starting-work'
+                target = '_blank'
+                className = 'flex flex-row gap-2 py-1 px-2 w-fit h-10 justify-center items-center rounded-md bg-blue-600 opacity-80 hover:opacity-95 active:border'
+              >
+                <Image
+                  src = '/icons/link.svg'
+                  alt = ''
+
+                  width = {50}
+                  height = {50}
+
+                  className = 'h-7 w-7 aspect-auto'
+                />
+                <span className = 'h-fit text-normal font-medium'>Learn More</span>
+                
+              </Link>
+            </AnimateOnViewDiv>
+          </AnimateOnViewDiv>
+        </div>
       </section>
+
+
+
+
+
+      
+
+
+
 
 
       {/* To Top Button */}
@@ -267,7 +358,7 @@ const Home = () => {
         className = 'flex fixed bottom-0 right-0 m-4 w-14 h-14 z-30 bg-white bg-opacity-60 rounded-full border-white border-2 cursor-pointer items-center justify-center hover:bg-opacity-80 active:border-4 transition-all duration-500'
 
         onClick = {e => {
-          e.preventDefault()
+          e.stopPropagation()
           topRef.current.scrollIntoView({ behavior: 'smooth' })
         }}
       >
