@@ -12,25 +12,27 @@ import { AnimateOnViewDiv, reveal, popReveal } from '@components/AnimateOnViewDi
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 const Schemes = () => {
-  const [schemes, setSchemes] = useState(null)                   // Private Cache
-  const [filtered, setFiltered] = useState(null)                 // To Display
+  const [schemes, setSchemes] = useState(null)                                   // Private Cache
+  const [filtered, setFiltered] = useState(null)                                 // To Display
 
-  const [isFiltering, setIsfiltering] = useState(false)          // Track filtering status
-  const [filteringTimeout, setFilteringTimeout] = useState(null) // Save timeout to, to clear previous filter and start new filtering
+  const [isFiltering, setIsfiltering] = useState(false)                          // Track filtering status
+  const [filterSignal, setFilterSignal] = useState(new AbortController())        // Kill previous filter execution
+  const [filteringTimeout, setFilteringTimeout] = useState(null)                 // Save timeout to, to clear previous filter and start new filtering
   
-  const [fetched, setFetched] = useState(false)                  // Tracks if fetched once already
+  const [fetched, setFetched] = useState(false)                                  // Tracks if fetched once already
 
-  const [groups, setGroups] = useState([])                       // Collection of groups from first fetch
-  const [Dtypes, setDTypes] = useState([])                       // Collection of types from first fetch
+  const [groups, setGroups] = useState([])                                       // Collection of groups from first fetch
+  const [Dtypes, setDTypes] = useState([])                                       // Collection of types from first fetch
 
-  const [query, setQuery] = useState('')                         // Query Text
-  const [queryTypes, setQueryTypes] = useState([])               // Query Types
-  const [queryGroups, setQueryGroups] = useState([])             // Query Groups
+  const [query, setQuery] = useState('')                                         // Query Text
+  const [queryTypes, setQueryTypes] = useState([])                               // Query Types
+  const [queryGroups, setQueryGroups] = useState([])                             // Query Groups
 
 
   // Search
   const handleSearch = (parsedQuery, parsedTypes, parsedGroups) => {
-    if (filteringTimeout) clearTimeout(filteringTimeout)                         // Clear previous running filter
+    filterSignal?.abort()                                                        // Kill previous filter and load process
+    clearTimeout(filteringTimeout)
     setIsfiltering(true)
 
     if (parsedQuery !== false) setQuery(parsedQuery)
@@ -42,7 +44,7 @@ const Schemes = () => {
     parsedGroups = (parsedGroups !== false) ? parsedGroups : queryGroups
 
     setFilteringTimeout(setTimeout(async() => {                                   // Cache new running filter
-
+      
       // Filter
       const filteredData = schemes.filter(item => {
         return (
@@ -59,6 +61,8 @@ const Schemes = () => {
           )
         )
       })
+      setIsfiltering(false)
+      setFiltered([])
 
 
       // Stagger Data
@@ -66,8 +70,7 @@ const Schemes = () => {
         setFiltered(filteredData.slice(0, i))
         await sleep(100)
       }
-      setIsfiltering(false)
-    }))
+    }, 0, { signal: filterSignal }))
   }
   
 
@@ -251,7 +254,11 @@ const Schemes = () => {
 
         {/* Results */}
         <AnimateOnViewDiv className  = 'flex flex-col gap-5 w-full sm:w-[60%] h-full max-h-[90vh] overflow-y-auto overflow-x-clip' >
-          {(!fetched || (fetched && (!filtered || !(filtered.length > 0))) || isFiltering) ? (
+          {(
+            !fetched || isFiltering
+            ||
+            (fetched && (!filtered || (filtered.length <= 0)))
+          ) ? (
             <div className  = 'mt-10 text-center text-xl font-bold' >
               {(isFiltering || !fetched) ? (
                 <Loading
