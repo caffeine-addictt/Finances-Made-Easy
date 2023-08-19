@@ -260,7 +260,7 @@ const Planner = () => {
             <AnimateOnViewDiv
               {...reveal}
               transition = {{ delay: 0.4 }}
-              className  = 'mt-10 p-1 px-3 border rounded-md'
+              className  = 'mt-4 p-1 px-3 border rounded-md'
             >
               Total: ${totalInccome}
             </AnimateOnViewDiv>
