@@ -82,7 +82,7 @@ Distributed under the BSD 3-Clause "New" or "Revised" License. See `LICENSE.txt`
 - [x] Final
 - [x] Open Source
 
-See the [open issues](https://github.com/caffeine-addictt/FInances-Made-Easy/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/caffeine-addictt/Finances-Made-Easy/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -93,7 +93,7 @@ See the [open issues](https://github.com/caffeine-addictt/FInances-Made-Easy/iss
 
 Alex - junxiangng63@gmail.com
 
-Project Link: [https://github.com/caffeine-addictt/FInances-Made-Easy](https://github.com/caffeine-addictt/FInances-Made-Easy)
+Project Link: [https://github.com/caffeine-addictt/Finances-Made-Easy](https://github.com/caffeine-addictt/Finances-Made-Easy)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
