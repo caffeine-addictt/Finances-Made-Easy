@@ -36,8 +36,17 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+> Finance website to help students in Singapore manage their money and find financial schemes
 
-The aim was to allow ease of finding a financial scheme for students in Singapore who may be struggling financially
+Education in Singapore can get costly, and true to the Singaporean spirit, we try to save as much as we can; <br />
+and that is what this project is all about!
+
+You are able to dynamically calculate your spendings and savings with our financial planner:
+![image](https://github.com/caffeine-addictt/Finances-Made-Easy/assets/104479537/e3edaf46-e5da-4dc4-8bba-06d238a3ea1c)
+
+Furthermore, we have collated a list of financial schemes where you can filter by name and category to find what suits you best:
+![image](https://github.com/caffeine-addictt/Finances-Made-Easy/assets/104479537/bcee93a8-1b3f-42d8-b9ee-f1fc96a5c0b1)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
